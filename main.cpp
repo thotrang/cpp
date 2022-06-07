@@ -1,13 +1,4 @@
-// float KhoangCachCacDiem(Obj point[5000], Obj newPoint[5000], float KhoangCach[5000][5000],int iX)
-// {
-//     for (int i = 0; i < iX; i++)
-//     {
-//         for(int j=0;j< 4457;j++ ){
-//             KhoangCach[i][j] = sqrt((point[j].getX - newPoint[i].getX) * (point[j].getX - newPoint[i].getX) + (point[j].getY - newPoint[i].getY) * (point[j].getY - newPoint[i].getY));
-//         }
 
-//     }
-// }
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -80,23 +71,63 @@ float timMax(float a[], int n)
     return max;
 }
 
-float KhoangCachCacDiem(Obj point[5000], Obj newPoint[200], float KhoangCach[200][5000],int iX)
+float KhoangCachCacDiem(Obj point[5000], Obj newPoint[200], float KhoangCach[200][5000], int iX)
 {
     for (int i = 0; i < iX; i++)
     {
-        for(int j=0;j< 4457;j++ ){
+        for (int j = 0; j < 4457; j++)
+        {
             KhoangCach[i][j] = sqrt((point[j].getX - newPoint[i].getX) * (point[j].getX - newPoint[i].getX) + (point[j].getY - newPoint[i].getY) * (point[j].getY - newPoint[i].getY));
         }
-
     }
 }
+void swap(float &a, float &b)
+{
+    float temp = a;
+    a = b;
+    b = temp;
+}
+float _4DiemGanNhat(Obj point[5000], float KhoangCach[200][5000], int iX, Obj _4Diem [200][4])
+{
+    for (int i = 0; i < iX; i++)
+    {
+        for (int j = 0; j < 4456; j++)
+        {
+            for (int t = j + 1; t < 4457; t++)
+            {
+                if (KhoangCach[i][j] > KhoangCach[i][t])
+                {
+                    swap(KhoangCach[i][j], KhoangCach[i][t]);
+                    swap(point[j], point[t]);
+                }
+            }
+        }
+        _4Diem [i][0] = point[4456];
+        _4Diem [i][1] = point[4455];
+        _4Diem [i][2] = point[4454];
+        _4Diem [i][3] = point[4453];
 
-// void swap(float &a, float &b)
-// {
-//     float temp = a;
-//     a = b;
-//     b = temp;
-// }
+        float m1 = KhoangCach[i][4456], m2 = KhoangCach[i][4455], m3 = KhoangCach[i][4454], m4 = KhoangCach[i][4453];
+        for (int j = 4456; j >= 0; j--)
+        {
+            if (KhoangCach[i][j] <= m1 && point[j].getZ != 4Diem [i][0])
+                _4Diem [i][0] = point[j];
+            else if (KhoangCach[i][j] <= m2 && point[j].getZ != 4Diem [i][1])
+                _4Diem [i][0] = point[j];
+            else if (KhoangCach[i][j] <= m3 && point[j].getZ != 4Diem [i][2])
+                _4Diem [i][0] = point[j];
+            else if (KhoangCach[i][j] <= m4 && point[j].getZ != 4Diem [i][3])
+                _4Diem [i][0] = point[j];
+        }
+    }
+}
+void swap(float &a, float &b)
+{
+    float temp = a;
+    a = b;
+    b = temp;
+}
+
 int main()
 {
     int n = 4457;
@@ -150,11 +181,10 @@ int main()
         i++;
     }
     float KhoangCach[200][5000];
-    KhoangCachCacDiem(point,newPoint,KhoangCach,iX);
-    
-   cout << "\n Xuat mang: " << endl;
+    KhoangCachCacDiem(point, newPoint, KhoangCach, iX);
 
-
+    Obj _4Diem [200][4];
+    _4DiemGanNhat(point,KhoangCach,iX,_4Diem);
     system("pause");
     return 0;
 }
