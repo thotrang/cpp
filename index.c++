@@ -89,8 +89,8 @@ float KhoangCachCacDiem(float x[5000], float y[5000], float xA, float yA, float 
 //             if(KhoangCach[i]>KhoangCach[j]){
 //                 swap(KhoangCach[i], KhoangCach[j]);
 //                 swap(z[i],z[j]);
-//                 swap(x[i],x[j]);
-//                 swap(y[i],y[j]);
+//                  swap(x[i],x[j]);
+//                  swap(y[i],y[j]);
 //             }
 //       }      
 //    }
@@ -124,8 +124,11 @@ int main()
 
    float arr[5000] = {};
    KhoangCachCacDiem(x, y, 18.25387, 42.63422, arr);
-   xuat(arr, 4457);
+   xuat(newX, 20);
+   xuat(newY,10);
 
    system("pause");
    return 0;
 }
+
+//

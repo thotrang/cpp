@@ -1,46 +1,45 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void xuat(float a[], int n)
+{
+   for (int i = 0; i < n; i++)
+      cout << a[i] << " ";
+}
 class Obj
 {
     float x;
     float y;
-    float z;
+    float z = 0;
 
-	public:
-		Obj(){}
-	   
-	    setX(float x)
-	    {
-	        this->x = x;
-	    }
-	    setY(float y)
-	    {
-	        this->y = y;
-	    }
-	    setZ(float z)
-	    {
-	        this->z = z;
-	    }
-	    getX()
-	    {
-	        return this->x;
-	    }
-	    getY()
-	    {
-	        return this->y;
-	    }
-	    getZ()
-	    {
-	        return this->z;
-	    }
+public:
+    Obj() {}
+
+    void setX(float x)
+    {
+        this->x = x;
+    }
+    void setY(float y)
+    {
+        this->y = y;
+    }
+    void setZ(float z)
+    {
+        this->z = z;
+    }
+    float getX()
+    {
+        return this->x;
+    }
+    float getY()
+    {
+        return this->y;
+    }
+    float getZ()
+    {
+        return this->z;
+    }
 };
-
-void xuat(float a[], int n)
-{
-    for (int i = 0; i < n; i++)
-        cout << a[i] << " ";
-}
 float timMin(float a[], int n)
 {
     float min = a[0];
@@ -70,56 +69,27 @@ float timMax(float a[], int n)
 
     return max;
 }
-void buocNhay(float newA[], float nhay, float min, float max)
-{
-    int i = 0;
-    while (min <= max)
-    {
-        newA[i] = min;
-        min += nhay;
-        i++;
-    }
-}
-float TinhKhoangCach(float xA, float yA, float xB, float yB)
-{
-   return sqrt((xB - xA) * (xB - xA) + (yB - yA) * (yB - yA));
-}
-// tính kho?ng cách t? A m?i so v?i các di?m cu
-// so sánh l?y 4 di?m g?n nh?t mà z c?a 4 di?m khác nhau
 
-void swap(float &a, float &b){
-    float temp =a;
-    a=b;
-    b=temp;
-}
-float KhoangCachCacDiem(float x[5000], float y[5000], float xA, float yA, float KhoangCach[5000])
-{
-   for (int i = 0; i < 4457; i++)
-   {
-      KhoangCach[i] = TinhKhoangCach(x[i], y[i], xA, yA);
-   }
-}
-// float 4Diem (float z[5000], float KhoangCach[5000], float arr4DiemX[4], float arr4DiemY[4], float arr4DiemZ[4], float x[5000],float y[5000])  
+
+// float TinhKhoangCach(float xA, float yA, float xB, float yB)
 // {
-//    //s?p x?p l?i kho?ng cách t? nh? d?n l?n
-//    for(int i=0;i<4456;i++){
-//       for(int j=i+1;j<4457;j++){
-//             if(KhoangCach[i]>KhoangCach[j]){
-//                 swap(KhoangCach[i], KhoangCach[j]);
-//                 swap(z[i],z[j]);
-//                  swap(x[i],x[j]);
-//                  swap(y[i],y[j]);
-//             }
-//       }      
-//    }
-//    // dua 4 ph?n t? vào arr4diem
-//    for(int i=0;i<4457;i++){
-
-//    }
-//     return 0;
+//     return sqrt((xB - xA) * (xB - xA) + (yB - yA) * (yB - yA));
 // }
 
 
+// float KhoangCachCacDiem(float x[5000], float y[5000], float xA, float yA, float KhoangCach[5000])
+// {
+//     for (int i = 0; i < 4457; i++)
+//     {
+//         KhoangCach[i] = TinhKhoangCach(x[i], y[i], xA, yA);
+//     }
+// }
+// void swap(float &a, float &b)
+// {
+//     float temp = a;
+//     a = b;
+//     b = temp;
+// }
 int main()
 {
     int n = 4457;
@@ -127,16 +97,54 @@ int main()
     Obj point[5000];
     ofstream outfile;
     freopen("slthu.txt", "r", stdin);
+
     for (int i = 0; i < 4457; i++)
     {
         cin >> x >> y >> z;
+
         point[i].setX(x);
         point[i].setY(y);
         point[i].setZ(z);
     }
-    for (int i = 0; i < 10; i++)
-    {
-        cout << point[i].getX() << " " << point[i].getY() << " " << point[i].getZ() << endl;
+    float arrx[5000] = {};
+    float arry[5000] = {};
+    float arrz[5000] = {};
+
+    freopen("slthu.txt", "r", stdin);
+    for (int i = 0; i < 4457; i++)
+        cin >> arrx[i] >> arry[i] >> arrz[i];
+
+    float minx = timMin(arrx, n), miny = timMin(arry, n);
+    float maxx = timMax(arrx, n), maxy = timMax(arry, n);
+
+    float newX[10000] = {};
+    float newY[10000] = {};
+    int iX=0;
+    while(minx<=maxx){
+       newX[iX]=minx;
+       minx+=0.00005;
+       iX++;
     }
+        int iY=0;
+    while(miny<=maxy){
+       newY[iY]=miny;
+       miny+=0.00007;
+       iY++;
+    }
+
+    Obj newPoint[10000];
+    int i=0;
+    while (i < iX)
+    {
+        newPoint[i].setX(newX[i]);
+        newPoint[i].setY(newY[i]);
+        i++;
+    }
+    for (int i = 0; i < iX; i++)
+    {
+        cout << newPoint[i].getX() << " " << newPoint[i].getY() << "" << endl;
+    }
+
+    system("pause");
     return 0;
 }
