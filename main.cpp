@@ -110,13 +110,13 @@ float _4DiemGanNhat(Obj point[5000], float KhoangCach[200][5000], int iX, Obj _4
         float m1 = KhoangCach[i][4456], m2 = KhoangCach[i][4455], m3 = KhoangCach[i][4454], m4 = KhoangCach[i][4453];
         for (int j = 4456; j >= 0; j--)
         {
-            if (KhoangCach[i][j] <= m1 && point[j].getZ != 4Diem [i][0])
+            if (KhoangCach[i][j] <= m1 && point[j].getZ != _4Diem [i][0])
                 _4Diem [i][0] = point[j];
-            else if (KhoangCach[i][j] <= m2 && point[j].getZ != 4Diem [i][1])
+            else if (KhoangCach[i][j] <= m2 && point[j].getZ != _4Diem [i][1])
                 _4Diem [i][0] = point[j];
-            else if (KhoangCach[i][j] <= m3 && point[j].getZ != 4Diem [i][2])
+            else if (KhoangCach[i][j] <= m3 && point[j].getZ != _4Diem [i][2])
                 _4Diem [i][0] = point[j];
-            else if (KhoangCach[i][j] <= m4 && point[j].getZ != 4Diem [i][3])
+            else if (KhoangCach[i][j] <= m4 && point[j].getZ != _4Diem [i][3])
                 _4Diem [i][0] = point[j];
         }
     }
