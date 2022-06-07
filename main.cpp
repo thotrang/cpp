@@ -1,10 +1,20 @@
+// float KhoangCachCacDiem(Obj point[5000], Obj newPoint[5000], float KhoangCach[5000][5000],int iX)
+// {
+//     for (int i = 0; i < iX; i++)
+//     {
+//         for(int j=0;j< 4457;j++ ){
+//             KhoangCach[i][j] = sqrt((point[j].getX - newPoint[i].getX) * (point[j].getX - newPoint[i].getX) + (point[j].getY - newPoint[i].getY) * (point[j].getY - newPoint[i].getY));
+//         }
+
+//     }
+// }
 #include <bits/stdc++.h>
 using namespace std;
 
 void xuat(float a[], int n)
 {
-   for (int i = 0; i < n; i++)
-      cout << a[i] << " ";
+    for (int i = 0; i < n; i++)
+        cout << a[i] << " ";
 }
 class Obj
 {
@@ -70,20 +80,17 @@ float timMax(float a[], int n)
     return max;
 }
 
+float KhoangCachCacDiem(Obj point[5000], Obj newPoint[200], float KhoangCach[200][5000],int iX)
+{
+    for (int i = 0; i < iX; i++)
+    {
+        for(int j=0;j< 4457;j++ ){
+            KhoangCach[i][j] = sqrt((point[j].getX - newPoint[i].getX) * (point[j].getX - newPoint[i].getX) + (point[j].getY - newPoint[i].getY) * (point[j].getY - newPoint[i].getY));
+        }
 
-// float TinhKhoangCach(float xA, float yA, float xB, float yB)
-// {
-//     return sqrt((xB - xA) * (xB - xA) + (yB - yA) * (yB - yA));
-// }
+    }
+}
 
-
-// float KhoangCachCacDiem(float x[5000], float y[5000], float xA, float yA, float KhoangCach[5000])
-// {
-//     for (int i = 0; i < 4457; i++)
-//     {
-//         KhoangCach[i] = TinhKhoangCach(x[i], y[i], xA, yA);
-//     }
-// }
 // void swap(float &a, float &b)
 // {
 //     float temp = a;
@@ -119,31 +126,34 @@ int main()
 
     float newX[10000] = {};
     float newY[10000] = {};
-    int iX=0;
-    while(minx<=maxx){
-       newX[iX]=minx;
-       minx+=0.00005;
-       iX++;
+    int iX = 0;
+    while (minx <= maxx)
+    {
+        newX[iX] = minx;
+        minx += 0.00005;
+        iX++;
     }
-        int iY=0;
-    while(miny<=maxy){
-       newY[iY]=miny;
-       miny+=0.00007;
-       iY++;
+    int iY = 0;
+    while (miny <= maxy)
+    {
+        newY[iY] = miny;
+        miny += 0.00007;
+        iY++;
     }
 
-    Obj newPoint[10000];
-    int i=0;
+    Obj newPoint[200];
+    int i = 0;
     while (i < iX)
     {
         newPoint[i].setX(newX[i]);
         newPoint[i].setY(newY[i]);
         i++;
     }
-    for (int i = 0; i < iX; i++)
-    {
-        cout << newPoint[i].getX() << " " << newPoint[i].getY() << "" << endl;
-    }
+    float KhoangCach[200][5000];
+    KhoangCachCacDiem(point,newPoint,KhoangCach,iX);
+    
+   cout << "\n Xuat mang: " << endl;
+
 
     system("pause");
     return 0;
