@@ -77,7 +77,7 @@ double timMax(double a[], int n)
 //     {
 //         for (int j = 0; j < 4457; j++)
 //         {
-//             KhoangCach[i][j] = sqrt((point[j].getX - newPoint[i].getX) * (point[j].getX - newPoint[i].getX) + (point[j].getY - newPoint[i].getY) * (point[j].getY - newPoint[i].getY));
+//             KhoangCach[i][j] = sqrt((point[j].getX() - newPoint[i].getX()) * (point[j].getX() - newPoint[i].getX()) + (point[j].getY() - newPoint[i].getY()) * (point[j].getY() - newPoint[i].getY()));
 //         }
 //     }
 // }
@@ -110,14 +110,26 @@ double timMax(double a[], int n)
 //         double m1 = KhoangCach[i][4456], m2 = KhoangCach[i][4455], m3 = KhoangCach[i][4454], m4 = KhoangCach[i][4453];
 //         for (int j = 4456; j >= 0; j--)
 //         {
-//             if (KhoangCach[i][j] <= m1 && point[j].getZ != _4Diem [i][0])
+//             if (KhoangCach[i][j] <= m1 && point[j].getZ() != _4Diem [i][0]){
 //                 _4Diem [i][0] = point[j];
-//             else if (KhoangCach[i][j] <= m2 && point[j].getZ != _4Diem [i][1])
+//                 m1=KhoangCach[i][j];
+//             }
+                
+//             else if (KhoangCach[i][j] <= m2 && point[j].getZ() != _4Diem [i][1]){
 //                 _4Diem [i][0] = point[j];
-//             else if (KhoangCach[i][j] <= m3 && point[j].getZ != _4Diem [i][2])
+//                 m2=KhoangCach[i][j];
+//             }
+                
+//             else if (KhoangCach[i][j] <= m3 && point[j].getZ() != _4Diem [i][2]){
 //                 _4Diem [i][0] = point[j];
-//             else if (KhoangCach[i][j] <= m4 && point[j].getZ != _4Diem [i][3])
+//                 m3=KhoangCach[i][j];
+//             }
+                
+//             else if (KhoangCach[i][j] <= m4 && point[j].getZ() != _4Diem [i][3]){
 //                 _4Diem [i][0] = point[j];
+//                 m4=KhoangCach[i][j];
+//             }
+                
 //         }
 //     }
 // }
@@ -126,7 +138,7 @@ int main()
 {
     int n = 4457;
     double x, y, z;
-    Obj point[5000];
+    Obj point[4500];
     ofstream outfile;
     freopen("slthu.txt", "r", stdin);
 
@@ -138,20 +150,19 @@ int main()
         point[i].setY(y);
         point[i].setZ(z);
     }
-    double arrx[5000] = {};
-    double arry[5000] = {};
-    double arrz[5000] = {};
+    double arrx[4500] = {};
+    double arry[4500] = {};
+    double arrz[4500] = {};
 
     freopen("slthu.txt", "r", stdin);
     for (int i = 0; i < 4457; i++)
         cin >> arrx[i] >> arry[i] >> arrz[i];
 
-
     double minx = timMin(arrx, n), miny = timMin(arry, n);
     double maxx = timMax(arrx, n), maxy = timMax(arry, n);
 
-    double newX[10000] = {};
-    double newY[10000] = {};
+    double newX[4500] = {};
+    double newY[4500] = {};
     int iX = 0;
     while (minx <= maxx)
     {
@@ -181,6 +192,13 @@ int main()
     }
     // double KhoangCach[200][5000];
     // KhoangCachCacDiem(point, newPoint, KhoangCach, iX);
+    // for (int i = 0; i < iX; i++)
+    // {
+    //     for (int j = 0; j < 4457; j++)
+    //     {
+    //         cout << 1 << endl;
+    //     }
+    // }
 
     // Obj _4Diem [200][4];
     // _4DiemGanNhat(point,KhoangCach,iX,_4Diem);
