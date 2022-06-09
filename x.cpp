@@ -161,25 +161,25 @@ int main()
 
         for (int j5 = 4456; j5 >= 0; j5--)
         {
-            if (KhoangCach[j5] <= m1 && point[j5].getZ() != Z[i4][0].getZ())
+            if (KhoangCach[j5] <= m1 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m1 = KhoangCach[j5];
             }
 
-            else if (KhoangCach[j5] <= m2 && point[j5].getZ() != Z[i4][1].getZ())
+            else if (KhoangCach[j5] <= m2 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m2 = KhoangCach[j5];
             }
 
-            else if (KhoangCach[j5] <= m3 && point[j5].getZ() != Z[i4][2].getZ())
+            else if (KhoangCach[j5] <= m3 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m3 = KhoangCach[j5];
             }
 
-            else if (KhoangCach[j5] <= m4 && point[j5].getZ() != Z[i4][3].getZ())
+            else if (KhoangCach[j5] <= m4 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m4 = KhoangCach[j5];
