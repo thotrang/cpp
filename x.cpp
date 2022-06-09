@@ -101,6 +101,11 @@ int main()
     freopen("slthu.txt", "r", stdin);
     for (int i = 0; i < 4457; i++)
         cin >> arrx[i] >> arry[i] >> arrz[i];
+    // for (int i = 0; i < 100; i++)
+    // {
+    //     cout<<setprecision(8);
+    //     cout << arrx[i] << "  " << arry[i] << "  " << arrz[i] << endl;
+    // }
 
     float minx = timMin(arrx, n), miny = timMin(arry, n);
     float maxx = timMax(arrx, n), maxy = timMax(arry, n);
@@ -161,25 +166,25 @@ int main()
 
         for (int j5 = 4456; j5 >= 0; j5--)
         {
-            if (KhoangCach[j5] <= m1 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
+            if (KhoangCach[j5] <= m1 && point[j5].getZ() != Z[i4][0].getZ() && point[j5].getZ() != Z[i4][1].getZ() && point[j5].getZ() != Z[i4][2].getZ() && point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m1 = KhoangCach[j5];
             }
 
-            else if (KhoangCach[j5] <= m2 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
+            else if (KhoangCach[j5] <= m2 && point[j5].getZ() != Z[i4][0].getZ() && point[j5].getZ() != Z[i4][1].getZ() && point[j5].getZ() != Z[i4][2].getZ() && point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m2 = KhoangCach[j5];
             }
 
-            else if (KhoangCach[j5] <= m3 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
+            else if (KhoangCach[j5] <= m3 && point[j5].getZ() != Z[i4][0].getZ() && point[j5].getZ() != Z[i4][1].getZ() && point[j5].getZ() != Z[i4][2].getZ() && point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m3 = KhoangCach[j5];
             }
 
-            else if (KhoangCach[j5] <= m4 && point[j5].getZ() != Z[i4][0].getZ()&& point[j5].getZ() != Z[i4][1].getZ()&& point[j5].getZ() != Z[i4][2].getZ()&& point[j5].getZ() != Z[i4][3].getZ())
+            else if (KhoangCach[j5] <= m4 && point[j5].getZ() != Z[i4][0].getZ() && point[j5].getZ() != Z[i4][1].getZ() && point[j5].getZ() != Z[i4][2].getZ() && point[j5].getZ() != Z[i4][3].getZ())
             {
                 Z[i4][0] = point[j5];
                 m4 = KhoangCach[j5];
@@ -192,10 +197,10 @@ int main()
         float a2 = (newPoint[iz].getX() * (Z[iz][2].getZ() - Z[iz][3].getZ()) - Z[iz][2].getZ() * Z[iz][3].getY() + Z[iz][3].getZ() * Z[iz][2].getX()) / (Z[iz][2].getX() - Z[iz][3].getX());
         float a3 = (newPoint[iz].getY() * (Z[iz][0].getY() - Z[iz][1].getY()) - Z[iz][0].getZ() * Z[iz][1].getY() + Z[iz][3].getZ() * Z[iz][0].getY()) / (Z[iz][0].getY() - Z[iz][1].getY());
         float a4 = (newPoint[iz].getY() * (Z[iz][1].getY() - Z[iz][0].getY()) - Z[iz][1].getZ() * Z[iz][1].getY() + Z[iz][2].getZ() * Z[iz][0].getY()) / (Z[iz][0].getY() - Z[iz][1].getY());
-        
+
         float a5 = (a1 + a2 + a3 + a4) / 4;
         newPoint[iz].setZ(a5);
-
+        cout<<setprecision(7);
         cout << newPoint[iz].getX() << "  " << newPoint[iz].getY() << "  " << newPoint[iz].getZ() << endl;
     }
 
