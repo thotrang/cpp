@@ -107,33 +107,25 @@ int main()
 
    float newX[4500] = {};
    float newY[4500] = {};
-   int iX = 0;
-   while (minx <= maxx)
+
+   for (int i = 0; i < 120; i++)
    {
-      newX[iX] = minx;
+      newX[i] = minx;
       minx += 0.00005;
-      iX++;
-   }
-   int iY = 0;
-   while (miny <= maxy)
-   {
-      newY[iY] = miny;
+      newY[i] = miny;
       miny += 0.00007;
-      iY++;
    }
 
    Obj newPoint[150];
-   int i = 0;
-   while (i < iX)
-   {
-      newPoint[i].setX(newX[i]);
-      newPoint[i].setY(newY[i]);
-      i++;
-   }
+    for (int i = 0; i < 120; i++)
+    {
+        newPoint[i].setX(newX[i]);
+        newPoint[i].setY(newY[i]);
+    }
    Obj _4Diem[200][4];
 
    float KhoangCach[4500] = {};
-   for (int i4 = 0; i4 < iX; i4++)
+   for (int i4 = 0; i4 < 120; i4++)
    {
       for (int kc = 0; kc < 4457; kc++) // tính khoảng cách newpoint với point
       {
@@ -152,11 +144,10 @@ int main()
          }
       }
 
-      _4Diem[i4][0] = point[4456];     //tìm 4 điểm của point gần với newpoint với z ko trùng nhau
+      _4Diem[i4][0] = point[4456]; // tìm 4 điểm của point gần với newpoint với z ko trùng nhau
       _4Diem[i4][1] = point[4455];
       _4Diem[i4][2] = point[4454];
       _4Diem[i4][3] = point[4453];
-
 
       float m1 = KhoangCach[4456], m2 = KhoangCach[4455], m3 = KhoangCach[4454], m4 = KhoangCach[4453];
 
@@ -170,30 +161,31 @@ int main()
 
          else if (KhoangCach[j5] <= m2 && point[j5].getZ() != _4Diem[i4][1].getZ())
          {
-            _4Diem[i4][0] = point[j5];
+            _4Diem[i4][1] = point[j5];
             m2 = KhoangCach[j5];
          }
 
          else if (KhoangCach[j5] <= m3 && point[j5].getZ() != _4Diem[i4][2].getZ())
          {
-            _4Diem[i4][0] = point[j5];
+            _4Diem[i4][2] = point[j5];
             m3 = KhoangCach[j5];
          }
 
          else if (KhoangCach[j5] <= m4 && point[j5].getZ() != _4Diem[i4][3].getZ())
          {
-            _4Diem[i4][0] = point[j5];
+            _4Diem[i4][3] = point[j5];
             m4 = KhoangCach[j5];
          }
       }
    }
-       for (int m1 = 0; m1 < iX; m1++)
-    {
-       for(int m2=0;m2<4;m2++){
-          cout << _4Diem[m1][m2].getX() << " " << _4Diem[m1][m2].getY() << " " <<  _4Diem[m1][m2].getZ() << endl;
-       }
-        
-    }
+   for (int m1 = 0; m1 < 120; m1++)
+   {
+      for (int m2 = 0; m2 < 4; m2++)
+      {
+         cout << _4Diem[m1][m2].getX() << " " << _4Diem[m1][m2].getY() << " " << _4Diem[m1][m2].getZ() << endl;
+      }
+      cout << endl;
+   }
 
    system("pause");
    return 0;
